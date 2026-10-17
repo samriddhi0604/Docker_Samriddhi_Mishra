@@ -1,0 +1,55 @@
+# Docker Compose: runs the Flask backend and the Express frontend
+# on the same user-defined network so they can reach each other by service name.
+#
+#   docker compose up --build     -> build both images and start the app
+#   open http://localhost:3000
+#
+# Image names use your Docker Hub username, e.g.
+#   DOCKERHUB_USERNAME=myname docker compose build && docker compose push
+name: docker-assignment
+
+services:
+  backend:
+    build: ./backend
+    image: ${DOCKERHUB_USERNAME:-local}/docker-assignment-backend:latest
+    container_name: flask-backend
+    environment:
+      - PORT=5000
+      # Optional: set MONGO_URI (e.g. in a .env file) to store data in MongoDB Atlas
+      - MONGO_URI=${MONGO_URI:-}
+    ports:
+      - "5000:5000"
+    volumes:
+      - backend-data:/app/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    image: ${DOCKERHUB_USERNAME:-local}/docker-assignment-frontend:latest
+    container_name: express-frontend
+    environment:
+      - PORT=3000
+      # "backend" is the service name above - Docker's DNS resolves it on app-network
+      - BACKEND_URL=http://backend:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  backend-data:
