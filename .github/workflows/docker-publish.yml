@@ -66,7 +66,8 @@ jobs:
           curl -s -i -X POST http://localhost:3000/submit \
             -d "name=samriddhi mishra" -d "email=samriddhi@example.com" -d "course=Docker" \
             -d "message=Testing Docker Compose" | grep -iE "^HTTP|^Location"
-          curl -s -L -X POST http://localhost:3000/submit \
+          # -d sends a POST; -L follows the 303 redirect with a GET, like a browser
+          curl -s -L http://localhost:3000/submit \
             -d "name=aarav sharma" -d "email=aarav@example.com" -d "course=DevOps" | grep "<h1>"
 
       - name: Test - invalid submission (error shown on the same page)
