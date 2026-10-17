@@ -1,0 +1,7 @@
+[
+  {"id": 1, "course": "DevOps", "duration_weeks": 16, "topics": ["Linux", "Git", "Docker", "Kubernetes", "CI/CD"]},
+  {"id": 2, "course": "Python", "duration_weeks": 8, "topics": ["Basics", "Functions", "File Handling"]},
+  {"id": 3, "course": "Flask", "duration_weeks": 4, "topics": ["Routing", "Templates", "REST APIs"]},
+  {"id": 4, "course": "MongoDB", "duration_weeks": 3, "topics": ["Documents", "CRUD", "Atlas"]},
+  {"id": 5, "course": "Docker", "duration_weeks": 3, "topics": ["Images", "Containers", "Compose", "Docker Hub"]}
+]
