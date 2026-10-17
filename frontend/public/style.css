@@ -1,0 +1,37 @@
+/* Shared styles for the Express frontend */
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  font-family: "Segoe UI", Arial, sans-serif; background: #eef2f7; color: #1f2937; padding: 24px;
+}
+.card {
+  background: #fff; width: 100%; max-width: 460px; padding: 32px;
+  border-radius: 12px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+h1 { margin: 0 0 6px; font-size: 24px; color: #1e3a8a; }
+.subtitle { margin: 0 0 22px; color: #6b7280; font-size: 14px; }
+label { display: block; font-weight: 600; font-size: 14px; margin: 14px 0 6px; }
+input, select, textarea {
+  width: 100%; padding: 10px 12px; font-size: 15px; font-family: inherit;
+  border: 1px solid #cbd5e1; border-radius: 8px; background: #fff;
+}
+textarea { resize: vertical; min-height: 80px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid #93c5fd; border-color: #3b82f6; }
+button, .button {
+  display: inline-block; margin-top: 22px; width: 100%; padding: 12px; font-size: 16px; font-weight: 600;
+  color: #fff; background: #2563eb; border: none; border-radius: 8px; cursor: pointer;
+  text-align: center; text-decoration: none;
+}
+button:hover, .button:hover { background: #1d4ed8; }
+.error {
+  background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca;
+  padding: 12px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 8px;
+}
+.success-icon {
+  width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; color: #16a34a;
+  display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 0 auto 16px;
+}
+.center { text-align: center; }
+.footer { margin-top: 18px; font-size: 13px; color: #6b7280; text-align: center; }
+.footer a { color: #2563eb; }
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 12px; }

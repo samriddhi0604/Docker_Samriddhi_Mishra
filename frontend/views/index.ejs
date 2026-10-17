@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Registration</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Course Registration</h1>
+    <p class="subtitle">Node.js + Express frontend &rarr; Flask backend</p>
+
+    <% if (error) { %>
+      <div class="error" role="alert"><strong>Error:</strong> <%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/submit" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="<%= values.name || '' %>" placeholder="Your full name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="<%= values.email || '' %>" placeholder="you@example.com">
+
+      <label for="course">Course</label>
+      <select id="course" name="course">
+        <option value="">-- Select a course --</option>
+        <% courses.forEach(function (c) { %>
+          <option value="<%= c %>" <%= values.course === c ? 'selected' : '' %>><%= c %></option>
+        <% }) %>
+      </select>
+
+      <label for="message">Message (optional)</label>
+      <textarea id="message" name="message" placeholder="Anything you'd like to add"><%= values.message || '' %></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p class="footer">Backend: <code><%= backendUrl %></code></p>
+  </div>
+</body>
+</html>

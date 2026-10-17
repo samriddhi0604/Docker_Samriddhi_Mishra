@@ -1,0 +1,18 @@
+{
+  "name": "docker-assignment-frontend",
+  "version": "1.0.0",
+  "description": "Express frontend that sends a course registration form to a Flask backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Samriddhi Mishra",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.22.3"
+  }
+}
